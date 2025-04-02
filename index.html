@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SK CRM</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="new-layout.css">
+    <link rel="stylesheet" href="comments-styles.css">
+    <link rel="stylesheet" href="auth-styles.css">
+    <link rel="stylesheet" href="messaging-styles.css">
+    <link rel="stylesheet" href="notifications-styles.css">
+    <link rel="stylesheet" href="profile-styles.css">
+    <link rel="stylesheet" href="settings-styles.css">
+    <link rel="stylesheet" href="sidebar-menu.css">
+    <link rel="stylesheet" href="task-views.css">
+    <link rel="stylesheet" href="user-management.css">
+    <link rel="stylesheet" href="header-styles.css">
+    <link rel="stylesheet" href="modal-styles.css">
+</head>
+
+<body class="theme-light">
+    <!-- Секция авторизации -->
+    <div id="auth-section" class="section">
+        <div class="auth-container">
+            <div class="auth-logo">
+                <h1>SK CRM</h1>
+                <p>Система управления задачами и проектами</p>
+            </div>
+            
+            <!-- Форма входа -->
+            <div id="login-form-container" class="auth-form-container">
+                <h2>Вход в систему</h2>
+                <p id="login-message"></p>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="login-username">Логин</label>
+                        <input type="text" id="login-username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Пароль</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <p id="login-error" class="error-message"></p>
+                    <button type="submit" class="primary-btn">Войти</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Основной контейнер приложения (изначально скрыт) -->
+    <div id="app-container" class="app-container" style="display: none;">
+        <header>
+            <div class="logo-area">
+                <h1>SK CRM</h1>
+            </div>
+            <div class="search-global">
+                <input type="text" id="global-search" placeholder="Глобальный поиск...">
+            </div>
+            <div class="header-right">
+                <button id="notifications-btn" class="header-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                    </svg>
+                    <span class="notification-badge">0</span>
+                </button>
+                <button id="open-chat-btn" class="header-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    <span class="chat-badge">0</span>
+                </button>
+                <div class="user-profile">
+                    <div class="user-avatar" id="user-avatar">
+                        <span id="user-initials">АП</span>
+                    </div>
+                    <div class="user-menu-dropdown">
+                        <div class="user-info">
+                            <span id="current-user-name">Пользователь</span>
+                            <span class="user-role" id="user-role">Пользователь</span>
+                        </div>
+                        <ul class="user-menu-links">
+                            <li><a href="#" id="profile-settings">Профиль</a></li>
+                            <li><a href="#" id="theme-toggle">Сменить тему</a></li>
+                            <li><a href="#" id="logout-btn">Выйти</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <div class="main-container">
+            <div class="sidebar">
+                <nav>
+                    <ul>
+                        <li><a href="#" id="projects-link"><svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 3h7v7H3z"/><path d="M14 3h7v7h-7z"/><path d="M14 14h7v7h-7z"/><path d="M3 14h7v7H3z"/></svg>Проекты</a></li>
+                        <li><a href="#" id="tasks-link"><svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>Задачи</a></li>
+                        <li><a href="#" id="calendar-link"><svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Календарь</a></li>
+                        <li class="admin-only"><a href="#" id="users-link"><svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>Пользователи</a></li>
+                        <li><a href="#" id="settings-link"><svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>Настройки</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="sidebar-footer">
+                    <div class="time-display">
+                        <div id="current-time">00:00</div>
+                        <div id="current-date">01.01.2025</div>
+                    </div>
+                </div>
+            </div>
+            
+            <main>
+                <!-- Проекты -->
+                <div id="projects" class="section">
+                    <div class="section-header">
+                        <h2>Проекты</h2>
+                        <div class="section-actions">
+                            <div class="search-container">
+                                <input type="text" id="project-search" placeholder="Поиск проектов...">
+                            </div>
+                            <button id="add-project-btn" class="primary-btn">Создать проект</button>
+                            <button id="manage-stages-btn" class="secondary-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="3"/>
+                                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                                </svg>
+                                Управление этапами
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-controls">
+                        <button class="project-filter-btn active" data-filter="all">Все проекты</button>
+                        <button class="project-filter-btn" data-filter="active">Активные</button>
+                        <button class="project-filter-btn" data-filter="completed">Завершенные</button>
+                    </div>
+                    
+                    <div class="projects-board" id="projects-board">
+                        <div class="loading-projects">Загрузка проектов...</div>
+                    </div>
+                </div>
+                
+                <!-- Задачи -->
+                <div id="tasks" class="section">
+                    <div class="section-header">
+                        <h2>Задачи</h2>
+                        <div class="section-actions">
+                            <div class="search-container">
+                                <input type="text" id="task-search" placeholder="Поиск задач...">
+                            </div>
+                            <button id="add-task-btn" class="primary-btn">Создать задачу</button>
+                            <button id="task-templates-btn" class="secondary-btn">Шаблоны задач</button>
+                            <div class="view-switcher">
+                                <button class="view-btn active" data-view="kanban">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                                </button>
+                                <button class="view-btn" data-view="list">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-controls">
+                        <button class="filter-btn active" data-filter="all">Все задачи</button>
+                        <button class="filter-btn" data-filter="новая">Новые</button>
+                        <button class="filter-btn" data-filter="в работе">В работе</button>
+                        <button class="filter-btn" data-filter="выполнена">Выполненные</button>
+                    </div>
+                    
+                    <div id="tasks-list" class="tasks-container">
+                        <!-- Список задач будет здесь -->
+                    </div>
+                </div>
+                
+                <!-- Пользователи (только для администраторов) -->
+                <div id="users" class="section admin-only" style="display: none;">
+                    <div class="section-header">
+                        <h2>Пользователи</h2>
+                        <div class="section-actions">
+                            <div class="search-container">
+                                <input type="text" id="user-search-input" placeholder="Поиск пользователей...">
+                            </div>
+                            <button id="add-user-btn" class="primary-btn">Добавить пользователя</button>
+                        </div>
+                    </div>
+                    
+                    <table id="users-table">
+                        <thead>
+                            <tr>
+                                <th>Имя</th>
+                                <th>Email</th>
+                                <th>Должность</th>
+                                <th>Отдел</th>
+                                <th>Роль</th>
+                                <th>Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody id="users-list">
+                            <!-- Список пользователей будет здесь -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Календарь -->
+                <div id="calendar" class="section" style="display: none;">
+                    <div class="section-header">
+                        <h2>Календарь</h2>
+                        <div class="section-actions">
+                            <div class="calendar-navigation">
+                                <button id="prev-month" class="calendar-nav-btn">&lt;</button>
+                                <h3 id="current-month">Апрель 2025</h3>
+                                <button id="next-month" class="calendar-nav-btn">&gt;</button>
+                            </div>
+                            <button id="add-event-btn" class="primary-btn">Добавить событие</button>
+                        </div>
+                    </div>
+                    
+                    <div class="calendar-container">
+                        <div class="calendar-weekdays">
+                            <div>Пн</div>
+                            <div>Вт</div>
+                            <div>Ср</div>
+                            <div>Чт</div>
+                            <div>Пт</div>
+                            <div>Сб</div>
+                            <div>Вс</div>
+                        </div>
+                        <div class="calendar-days" id="calendar-days">
+                            <!-- Дни будут добавлены через JavaScript -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Настройки -->
+                <div id="settings" class="section" style="display: none;">
+                    <div class="section-header">
+                        <h2>Настройки</h2>
+                    </div>
+                    
+                    <div class="settings-container">
+                        <div class="settings-group">
+                            <h3>Внешний вид</h3>
+                            <div class="setting-item">
+                                <span>Тема оформления</span>
+                                <div class="theme-selector">
+                                    <button class="theme-btn active" data-theme="light">Светлая</button>
+                                    <button class="theme-btn" data-theme="dark">Темная</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="settings-group admin-only">
+                            <h3>Администрирование</h3>
+                            <div class="setting-item">
+                                <span>Настройки доступа</span>
+                                <button id="manage-access-btn" class="secondary-btn">Управление доступом</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        
+        <!-- Всплывающие уведомления -->
+        <div id="notifications-container" class="notifications-container">
+            <!-- Уведомления будут добавляться сюда -->
+        </div>
+    </div>
+    
+    <!-- Модальные окна -->
+    <!-- Модальное окно для пользователя -->
+    <div class="modal" id="user-modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3 id="user-modal-title">Добавить пользователя</h3>
+            <form id="user-form">
+                <div class="form-group">
+                    <label for="username">Логин</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Пароль</label>
+                    <input type="password" id="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="position">Должность</label>
+                    <input type="text" id="position">
+                </div>
+                <div class="form-group">
+                    <label for="department">Отдел</label>
+                    <input type="text" id="department">
+                </div>
+                <div class="form-group admin-only">
+                    <label for="user-role">Роль пользователя</label>
+                    <select id="user-role-select">
+                        <option value="user">Пользователь</option>
+                        <option value="admin">Администратор</option>
+                    </select>
+                </div>
+                <button type="submit" class="primary-btn">Сохранить</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Модальное окно для задачи -->
+    <div class="modal" id="task-modal" style="display: none;">
+        <div class="modal-content modal-large">
+            <span class="close">&times;</span>
+            <h3 id="task-modal-title">Создать задачу</h3>
+            <form id="task-form">
+                <div class="task-form-container">
+                    <div class="task-form-left">
+                        <div class="form-group">
+                            <label for="task-title">Название</label>
+                            <input type="text" id="task-title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="task-description">Описание</label>
+                            <textarea id="task-description" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="task-project">Проект</label>
+                            <select id="task-project">
+                                <option value="">Нет проекта</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Чек-лист</label>
+                            <div class="checklist-container" id="task-checklist">
+                                <div class="checklist-empty">Нет пунктов в чек-листе</div>
+                            </div>
+                            <div class="checklist-add">
+                                <input type="text" id="checklist-item-input" placeholder="Новый пункт...">
+                                <button type="button" id="add-checklist-item" class="secondary-btn small">Добавить</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="task-form-right">
+                        <div class="form-group">
+                            <label for="task-deadline">Крайний срок</label>
+                            <input type="datetime-local" id="task-deadline">
+                        </div>
+                        <div class="form-group">
+                            <label for="task-priority">Приоритет</label>
+                            <select id="task-priority">
+                                <option value="низкий">Низкий</option>
+                                <option value="средний" selected>Средний</option>
+                                <option value="высокий">Высокий</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="assigned-to">Исполнитель</label>
+                            <select id="assigned-to" required>
+                                <option value="">Выберите исполнителя</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="co-assignee">Соисполнители</label>
+                            <select id="co-assignee" multiple>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="watcher">Наблюдатели</label>
+                            <select id="watcher" multiple>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="primary-btn">Сохранить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно для просмотра задачи и комментариев -->
+    <div class="modal" id="task-detail-modal" style="display: none;">
+        <div class="modal-content modal-large">
+            <span class="close">&times;</span>
+            <h3 id="task-detail-title">Детали задачи</h3>
+            <div id="task-detail-content">
+                <!-- Содержимое будет добавлено динамически -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для чата -->
+    <div class="modal" id="messaging-modal" style="display: none;">
+        <div class="modal-content messaging-content">
+            <span class="close">&times;</span>
+            
+            <!-- Контейнер для списка диалогов -->
+            <div id="conversations-container" class="conversations-container">
+                <div class="messaging-header">
+                    <h3>Сообщения</h3>
+                    <div class="search-container">
+                        <input type="text" id="user-search" placeholder="Поиск пользователей...">
+                        <div id="search-results" class="search-results"></div>
+                    </div>
+                </div>
+                <div id="conversations-list" class="conversations-list">
+                    <!-- Список диалогов будет здесь -->
+                </div>
+            </div>
+            
+            <!-- Пустой экран чата -->
+            <div id="empty-chat" class="empty-chat">
+                <div class="empty-chat-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                </div>
+                <p>Выберите диалог из списка или начните новый</p>
+            </div>
+            
+            <!-- Контейнер для чата -->
+            <div id="chat-container" class="chat-container" style="display: none;">
+                <div class="chat-header">
+                    <button id="back-to-conversations" class="back-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 12H5"></path>
+                            <path d="M12 19l-7-7 7-7"></path>
+                        </svg>
+                    </button>
+                    <div id="chat-header-name" class="chat-header-name">Имя пользователя</div>
+                </div>
+                <div id="messages-list" class="messages-list">
+                    <!-- Сообщения будут здесь -->
+                </div>
+                <form id="message-form" class="message-form">
+                    <input type="hidden" id="current-recipient" value="">
+                    <input type="text" id="message-input" placeholder="Введите сообщение..." autocomplete="off">
+                    <button type="submit" class="send-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Модальное окно для создания события календаря -->
+    <div class="modal" id="event-modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3 id="event-modal-title">Добавить событие</h3>
+            <form id="event-form">
+                <div class="form-group">
+                    <label for="event-title">Название</label>
+                    <input type="text" id="event-title" required>
+                </div>
+                <div class="form-group">
+                    <label for="event-description">Описание</label>
+                    <textarea id="event-description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="event-date">Дата</label>
+                    <input type="date" id="event-date" required>
+                </div>
+                <div class="form-group">
+                    <label for="event-time">Время</label>
+                    <input type="time" id="event-time">
+                </div>
+                <div class="form-group">
+                    <label for="event-reminder">Напоминание</label>
+                    <select id="event-reminder">
+                        <option value="0">Без напоминания</option>
+                        <option value="15">За 15 минут</option>
+                        <option value="30">За 30 минут</option>
+                        <option value="60">За 1 час</option>
+                        <option value="120">За 2 часа</option>
+                        <option value="1440">За 1 день</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="primary-btn">Сохранить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Основной скрипт приложения -->
+    <script src="script.js"></script>
+</body>
+</html>

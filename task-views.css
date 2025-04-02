@@ -1,0 +1,522 @@
+/* Стили для представлений задач (канбан и список) */
+
+/* Представление канбан */
+.tasks-container {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 20px;
+}
+
+.task-status-column {
+    min-width: 300px;
+    width: 300px;
+    background-color: var(--color-bg-card);
+    border-radius: 10px;
+    box-shadow: 0 1px 3px var(--color-shadow);
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 220px);
+    overflow-y: auto;
+    padding-bottom: 10px;
+    border: 1px solid var(--color-border);
+}
+
+.task-status-header {
+    padding: 15px;
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    background-color: var(--color-bg-card);
+    z-index: 1;
+}
+
+.task-status-header h3 {
+    margin: 0;
+    font-size: 16px;
+    color: var(--color-text-primary);
+    font-weight: 600;
+}
+
+.task-count {
+    background-color: var(--color-primary-light);
+    color: white;
+    border-radius: 12px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.task-card {
+    background-color: var(--color-bg-main);
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px;
+    box-shadow: 0 1px 2px var(--color-shadow);
+    position: relative;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border-left: 3px solid var(--color-primary);
+}
+
+.task-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 3px 6px var(--color-shadow);
+}
+
+.task-status {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.task-status.новая {
+    background-color: #e3f2fd;
+    color: #1976d2;
+}
+
+.task-status.в-работе {
+    background-color: #fff8e1;
+    color: #ff8f00;
+}
+
+.task-status.выполнена {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.task-participants {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.task-participant {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: -8px;
+    border: 2px solid var(--color-bg-main);
+}
+
+.task-participant.creator {
+    background-color: var(--color-info);
+}
+
+.task-participant.assignee {
+    background-color: var(--color-success);
+}
+
+.task-participant.additional {
+    background-color: var(--color-secondary);
+}
+
+.task-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 5px 0 10px 0;
+    color: var(--color-text-primary);
+    padding-right: 70px; /* Для статуса */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.task-description {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    margin-bottom: 15px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.task-project {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+}
+
+.task-project svg {
+    margin-right: 5px;
+}
+
+.task-checklist-summary {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    margin-bottom: 10px;
+}
+
+.task-checklist-summary svg {
+    margin-right: 5px;
+}
+
+.task-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: var(--color-text-muted);
+    border-top: 1px solid var(--color-border);
+    padding-top: 8px;
+    margin-top: auto;
+}
+
+.task-priority, .task-deadline {
+    display: flex;
+    align-items: center;
+}
+
+.task-priority svg, .task-deadline svg {
+    margin-right: 5px;
+}
+
+.task-priority.низкий {
+    color: var(--color-success);
+}
+
+.task-priority.средний {
+    color: var(--color-warning);
+}
+
+.task-priority.высокий {
+    color: var(--color-danger);
+}
+
+.task-deadline.overdue {
+    color: var(--color-danger);
+}
+
+/* Представление в виде списка */
+.tasks-list-view {
+    background-color: var(--color-bg-card);
+    border-radius: 10px;
+    box-shadow: 0 1px 3px var(--color-shadow);
+    overflow: hidden;
+}
+
+.task-list-header {
+    display: flex;
+    background-color: var(--color-bg-main);
+    padding: 15px;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.task-list-row {
+    display: flex;
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--color-border);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.task-list-row:hover {
+    background-color: var(--color-bg-main);
+}
+
+.task-list-col {
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+}
+
+.task-col-status {
+    width: 120px;
+}
+
+.task-col-title {
+    flex: 1;
+    min-width: 200px;
+}
+
+.task-col-assignee {
+    width: 150px;
+}
+
+.task-col-deadline {
+    width: 150px;
+}
+
+.task-col-priority {
+    width: 120px;
+}
+
+.task-col-actions {
+    width: 100px;
+    justify-content: flex-end;
+}
+
+.task-status-badge {
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.task-status-badge.новая {
+    background-color: #e3f2fd;
+    color: #1976d2;
+}
+
+.task-status-badge.в-работе {
+    background-color: #fff8e1;
+    color: #ff8f00;
+}
+
+.task-status-badge.выполнена {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+/* Результаты поиска */
+.search-results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: var(--color-bg-card);
+    border-radius: 10px;
+    box-shadow: 0 1px 3px var(--color-shadow);
+}
+
+.search-results-header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: var(--color-text-primary);
+}
+
+.search-results-column {
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Детали задачи */
+.task-detail-container {
+    display: flex;
+    gap: 20px;
+}
+
+.task-detail-left {
+    flex: 3;
+}
+
+.task-detail-right {
+    flex: 1;
+    min-width: 250px;
+}
+
+.task-detail-section {
+    background-color: var(--color-bg-main);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 15px;
+    box-shadow: 0 1px 3px var(--color-shadow);
+}
+
+.task-detail-section h4 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: var(--color-text-secondary);
+    font-size: 16px;
+    font-weight: 600;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 8px;
+}
+
+.task-detail-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.detail-label {
+    font-weight: 500;
+    width: 140px;
+    color: var(--color-text-secondary);
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.detail-value {
+    color: var(--color-text-primary);
+    font-size: 14px;
+    flex-grow: 1;
+}
+
+.detail-value.with-avatar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.user-avatar-small {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 600;
+    margin-right: 5px;
+}
+
+.user-avatar-small.creator {
+    background-color: var(--color-info);
+}
+
+.user-avatar-small.assignee {
+    background-color: var(--color-success);
+}
+
+.user-avatar-small.co-assignee {
+    background-color: var(--color-warning);
+}
+
+.user-avatar-small.watcher {
+    background-color: var(--color-secondary);
+}
+
+.status-actions {
+    margin-left: auto;
+}
+
+.status-actions .secondary-btn {
+    margin-left: 5px;
+}
+
+.task-detail-description {
+    padding: 15px;
+    background-color: var(--color-bg-card);
+    border-radius: 6px;
+    border: 1px solid var(--color-border);
+    margin-bottom: 10px;
+    line-height: 1.6;
+    color: var(--color-text-primary);
+    white-space: pre-line;
+}
+
+.task-checklist {
+    margin-bottom: 10px;
+}
+
+.checklist-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.checklist-item:last-child {
+    border-bottom: none;
+}
+
+.checklist-item input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.checklist-item-label {
+    flex-grow: 1;
+    font-size: 14px;
+    color: var(--color-text-primary);
+}
+
+.checklist-item.completed .checklist-item-label {
+    text-decoration: line-through;
+    color: var(--color-text-muted);
+}
+
+.task-history {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.history-item {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 13px;
+    color: var(--color-text-secondary);
+}
+
+.history-item:last-child {
+    border-bottom: none;
+}
+
+.history-date {
+    color: var(--color-text-muted);
+    display: block;
+    margin-bottom: 3px;
+}
+
+.history-action {
+    font-weight: 500;
+}
+
+.history-user {
+    color: var(--color-primary);
+    margin-left: 5px;
+}
+
+.task-detail-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* Сообщения отсутствия задач */
+.no-user-message, .no-tasks-message {
+    padding: 40px 20px;
+    text-align: center;
+    color: var(--color-text-muted);
+    background-color: var(--color-bg-card);
+    border-radius: 10px;
+    box-shadow: 0 1px 3px var(--color-shadow);
+    margin: 20px 0;
+}
+
+.no-tasks-message:before {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>');
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 auto 20px;
+    opacity: 0.4;
+}
+
+.secondary-btn.danger {
+    border-color: var(--color-danger);
+    color: var(--color-danger);
+}
+
+.secondary-btn.danger:hover {
+    background-color: rgba(239, 68, 68, 0.1);
+}

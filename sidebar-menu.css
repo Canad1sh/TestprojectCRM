@@ -1,0 +1,370 @@
+/* Стили для боковой панели навигации в новом дизайне */
+
+/* Основной контейнер боковой панели */
+.sidebar {
+    width: 250px;
+    min-width: 250px;
+    height: 100vh;
+    background-color: var(--color-bg-sidebar);
+    color: var(--color-text-sidebar);
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--color-border);
+    transition: width 0.3s ease;
+    overflow-x: hidden;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+}
+
+/* Лого компании в боковой панели */
+.sidebar-logo {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--color-border-sidebar);
+    height: 65px;
+}
+
+.sidebar-logo h1 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* Навигационное меню */
+.sidebar-nav {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px 0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-scrollbar) transparent;
+}
+
+.sidebar-nav::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sidebar-nav::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+    background-color: var(--color-scrollbar);
+    border-radius: 2px;
+}
+
+.nav-section {
+    margin-bottom: 15px;
+}
+
+.nav-section-title {
+    padding: 6px 20px;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-item {
+    margin: 2px 0;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    color: var(--color-text-sidebar);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+    position: relative;
+}
+
+.nav-link:hover {
+    background-color: var(--color-bg-sidebar-hover);
+    color: var(--color-primary);
+}
+
+.nav-link.active {
+    background-color: var(--color-bg-sidebar-active);
+    color: var(--color-primary);
+    border-left-color: var(--color-primary);
+}
+
+.nav-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    color: currentColor;
+    flex-shrink: 0;
+}
+
+.nav-text {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+}
+
+.nav-badge {
+    background-color: var(--color-primary);
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 1px 6px;
+    border-radius: 10px;
+    margin-left: 8px;
+}
+
+/* Подкатегории навигации */
+.nav-submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.nav-item.expanded .nav-submenu {
+    max-height: 500px; /* Произвольное большое значение */
+}
+
+.nav-submenu-link {
+    padding: 8px 20px 8px 52px;
+    display: block;
+    color: var(--color-text-sidebar);
+    text-decoration: none;
+    font-size: 13px;
+    transition: all 0.2s ease;
+}
+
+.nav-submenu-link:hover {
+    background-color: var(--color-bg-sidebar-hover);
+    color: var(--color-primary);
+}
+
+.nav-submenu-link.active {
+    color: var(--color-primary);
+    font-weight: 500;
+}
+
+/* Кнопка разворачивания меню */
+.nav-toggle {
+    color: var(--color-text-muted);
+    position: relative;
+}
+
+.nav-toggle:after {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+    transition: transform 0.2s ease;
+}
+
+.nav-item.expanded .nav-toggle:after {
+    transform: translateY(-50%) rotate(45deg);
+}
+
+/* Нижняя часть боковой панели */
+.sidebar-footer {
+    padding: 15px 20px;
+    border-top: 1px solid var(--color-border-sidebar);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Отображение времени и даты */
+.time-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    background-color: var(--color-bg-sidebar-active);
+    border-radius: 6px;
+}
+
+#current-time {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+#current-date {
+    font-size: 12px;
+    color: var(--color-text-muted);
+    margin-top: 2px;
+}
+
+/* Кнопка сворачивания боковой панели */
+.collapse-sidebar {
+    background: transparent;
+    border: none;
+    color: var(--color-text-muted);
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    transition: all 0.2s ease;
+}
+
+.collapse-sidebar:hover {
+    background-color: var(--color-bg-sidebar-hover);
+    color: var(--color-primary);
+}
+
+.collapse-sidebar svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Коллапсированное состояние боковой панели */
+.sidebar.collapsed {
+    width: 60px;
+}
+
+.sidebar.collapsed .sidebar-logo h1,
+.sidebar.collapsed .nav-text,
+.sidebar.collapsed .nav-badge,
+.sidebar.collapsed .nav-section-title,
+.sidebar.collapsed .nav-submenu,
+.sidebar.collapsed .time-display #current-date {
+    display: none;
+}
+
+.sidebar.collapsed .nav-link {
+    padding: 12px 0;
+    justify-content: center;
+}
+
+.sidebar.collapsed .nav-icon {
+    margin-right: 0;
+}
+
+.sidebar.collapsed .sidebar-footer {
+    padding: 15px 10px;
+}
+
+.sidebar.collapsed .time-display {
+    padding: 5px;
+}
+
+.sidebar.collapsed #current-time {
+    font-size: 14px;
+}
+
+.sidebar.collapsed .collapse-sidebar svg {
+    transform: rotate(180deg);
+}
+
+/* Состояние боковой панели на мобильных устройствах */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        width: 280px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        height: 100vh;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .sidebar.visible {
+        transform: translateX(0);
+    }
+    
+    .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        display: none;
+    }
+    
+    .sidebar-overlay.visible {
+        display: block;
+    }
+}
+
+/* Сдвиг основного контента при открытой боковой панели */
+.main-container {
+    margin-left: 250px;
+    transition: margin 0.3s ease;
+}
+
+.main-container.sidebar-collapsed {
+    margin-left: 60px;
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        margin-left: 0;
+    }
+}
+
+/* Стили для кнопки-гамбургера на мобильных устройствах */
+.mobile-sidebar-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--color-text-primary);
+    font-size: 24px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .mobile-sidebar-toggle {
+        display: block;
+    }
+}
+
+/* Анимации для перехода между разделами */
+.nav-link {
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-primary);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: right;
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.nav-link.active::after {
+    transform: scaleX(1);
+}

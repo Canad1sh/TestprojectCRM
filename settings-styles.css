@@ -1,0 +1,574 @@
+/* settings-styles.css - стили для настроек */
+
+/* Модальное окно настроек */
+#settings-modal .modal-content {
+    max-width: 550px;
+}
+
+#settings-modal .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e2e8f0;
+    margin-bottom: 20px;
+}
+
+#settings-modal .modal-header h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #334155;
+}
+
+#settings-modal .settings-tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+#settings-modal .settings-tab {
+    padding: 10px 16px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-bottom: 2px solid transparent;
+}
+
+#settings-modal .settings-tab.active {
+    color: #4a6cf7;
+    border-bottom-color: #4a6cf7;
+}
+
+#settings-modal .settings-tab:hover {
+    color: #334155;
+}
+
+#settings-modal .settings-section {
+    display: none;
+    margin-bottom: 20px;
+}
+
+#settings-modal .settings-section.active {
+    display: block;
+}
+
+#settings-modal .settings-section h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #334155;
+    margin-top: 0;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+/* Настройки оформления */
+.settings-option {
+    margin-bottom: 16px;
+}
+
+.settings-option label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #475569;
+    font-size: 14px;
+}
+
+.settings-option select,
+.settings-option input[type="text"],
+.settings-option input[type="email"],
+.settings-option input[type="password"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    background-color: #f8fafc;
+    color: #334155;
+}
+
+.settings-option select:focus,
+.settings-option input[type="text"]:focus,
+.settings-option input[type="email"]:focus,
+.settings-option input[type="password"]:focus {
+    outline: none;
+    border-color: #4a6cf7;
+    box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.15);
+    background-color: #fff;
+}
+
+/* Переключатели */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    margin-left: 10px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #cbd5e1;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .toggle-slider {
+    background-color: #4a6cf7;
+}
+
+input:focus + .toggle-slider {
+    box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.15);
+}
+
+input:checked + .toggle-slider:before {
+    transform: translateX(26px);
+}
+
+.toggle-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.toggle-text {
+    font-size: 14px;
+    color: #475569;
+}
+
+/* Кнопки формы */
+.settings-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.btn-cancel {
+    background-color: #f1f5f9;
+    color: #64748b;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-cancel:hover {
+    background-color: #e2e8f0;
+    color: #475569;
+}
+
+.btn-save {
+    background-color: #4a6cf7;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-save:hover {
+    background-color: #3955c8;
+}
+
+/* Настройки профиля пользователя */
+.user-avatar-settings {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.avatar-preview {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #4a6cf7;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: 600;
+    margin-right: 20px;
+    overflow: hidden;
+}
+
+.avatar-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatar-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.avatar-upload-btn {
+    background-color: #4a6cf7;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.avatar-upload-btn svg {
+    margin-right: 6px;
+}
+
+.avatar-upload-btn:hover {
+    background-color: #3955c8;
+}
+
+.avatar-remove-btn {
+    background-color: #f1f5f9;
+    color: #64748b;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.avatar-remove-btn svg {
+    margin-right: 6px;
+}
+
+.avatar-remove-btn:hover {
+    background-color: #fee2e2;
+    color: #ef4444;
+}
+
+/* Настройки безопасности */
+.password-fields {
+    margin-top: 16px;
+}
+
+.password-strength {
+    margin-top: 8px;
+    font-size: 12px;
+}
+
+.password-strength.weak {
+    color: #ef4444;
+}
+
+.password-strength.medium {
+    color: #f59e0b;
+}
+
+.password-strength.strong {
+    color: #10b981;
+}
+
+/* Администрирование */
+.admin-users-list {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+}
+
+.admin-user-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.admin-user-item:last-child {
+    border-bottom: none;
+}
+
+.admin-user-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #4a6cf7;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    margin-right: 12px;
+    overflow: hidden;
+}
+
+.admin-user-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.admin-user-info {
+    flex-grow: 1;
+}
+
+.admin-user-name {
+    font-weight: 500;
+    color: #334155;
+    font-size: 14px;
+}
+
+.admin-user-email {
+    color: #64748b;
+    font-size: 13px;
+}
+
+.admin-user-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.admin-user-edit-btn,
+.admin-user-delete-btn {
+    background: none;
+    border: none;
+    padding: 6px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-user-edit-btn {
+    color: #3b82f6;
+}
+
+.admin-user-edit-btn:hover {
+    background-color: #dbeafe;
+}
+
+.admin-user-delete-btn {
+    color: #ef4444;
+}
+
+.admin-user-delete-btn:hover {
+    background-color: #fee2e2;
+}
+
+/* Темная тема для настроек */
+.dark-mode #settings-modal .modal-header {
+    border-bottom-color: #334155;
+}
+
+.dark-mode #settings-modal .modal-header h3 {
+    color: #e2e8f0;
+}
+
+.dark-mode #settings-modal .settings-tabs {
+    border-bottom-color: #334155;
+}
+
+.dark-mode #settings-modal .settings-tab {
+    color: #94a3b8;
+}
+
+.dark-mode #settings-modal .settings-tab.active {
+    color: #60a5fa;
+    border-bottom-color: #60a5fa;
+}
+
+.dark-mode #settings-modal .settings-tab:hover {
+    color: #e2e8f0;
+}
+
+.dark-mode #settings-modal .settings-section h4 {
+    color: #e2e8f0;
+    border-bottom-color: #334155;
+}
+
+.dark-mode .settings-option label {
+    color: #94a3b8;
+}
+
+.dark-mode .settings-option select,
+.dark-mode .settings-option input[type="text"],
+.dark-mode .settings-option input[type="email"],
+.dark-mode .settings-option input[type="password"] {
+    border-color: #334155;
+    background-color: #1e293b;
+    color: #e2e8f0;
+}
+
+.dark-mode .settings-option select:focus,
+.dark-mode .settings-option input[type="text"]:focus,
+.dark-mode .settings-option input[type="email"]:focus,
+.dark-mode .settings-option input[type="password"]:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+}
+
+.dark-mode .toggle-slider {
+    background-color: #475569;
+}
+
+.dark-mode input:checked + .toggle-slider {
+    background-color: #60a5fa;
+}
+
+.dark-mode .toggle-text {
+    color: #94a3b8;
+}
+
+.dark-mode .settings-form-actions {
+    border-top-color: #334155;
+}
+
+.dark-mode .btn-cancel {
+    background-color: #334155;
+    color: #94a3b8;
+}
+
+.dark-mode .btn-cancel:hover {
+    background-color: #475569;
+    color: #e2e8f0;
+}
+
+.dark-mode .btn-save {
+    background-color: #60a5fa;
+}
+
+.dark-mode .btn-save:hover {
+    background-color: #3b82f6;
+}
+
+.dark-mode .avatar-preview {
+    background-color: #60a5fa;
+}
+
+.dark-mode .avatar-upload-btn {
+    background-color: #60a5fa;
+}
+
+.dark-mode .avatar-upload-btn:hover {
+    background-color: #3b82f6;
+}
+
+.dark-mode .avatar-remove-btn {
+    background-color: #334155;
+    color: #94a3b8;
+}
+
+.dark-mode .avatar-remove-btn:hover {
+    background-color: #7f1d1d;
+    color: #f87171;
+}
+
+.dark-mode .admin-users-list {
+    border-color: #334155;
+}
+
+.dark-mode .admin-user-item {
+    border-bottom-color: #334155;
+}
+
+.dark-mode .admin-user-avatar {
+    background-color: #60a5fa;
+}
+
+.dark-mode .admin-user-name {
+    color: #e2e8f0;
+}
+
+.dark-mode .admin-user-email {
+    color: #94a3b8;
+}
+
+.dark-mode .admin-user-edit-btn {
+    color: #60a5fa;
+}
+
+.dark-mode .admin-user-edit-btn:hover {
+    background-color: #1e40af;
+}
+
+.dark-mode .admin-user-delete-btn {
+    color: #f87171;
+}
+
+.dark-mode .admin-user-delete-btn:hover {
+    background-color: #7f1d1d;
+}
+
+/* Адаптивный дизайн */
+@media (max-width: 576px) {
+    #settings-modal .modal-content {
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+    }
+    
+    .user-avatar-settings {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .avatar-preview {
+        margin-right: 0;
+        margin-bottom: 16px;
+    }
+    
+    .avatar-actions {
+        align-items: center;
+    }
+    
+    .settings-form-actions {
+        flex-direction: column;
+    }
+    
+    .btn-cancel,
+    .btn-save {
+        width: 100%;
+    }
+}

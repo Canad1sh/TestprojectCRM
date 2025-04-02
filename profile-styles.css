@@ -1,0 +1,237 @@
+/* Стили для профиля пользователя */
+
+.profile-modal .modal-content {
+    max-width: 600px;
+    border-radius: 12px;
+    padding: 0;
+    overflow: hidden;
+}
+
+.profile-header {
+    padding: 30px;
+    background-color: #f0f5ff;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.profile-avatar-container {
+    position: relative;
+    margin-right: 20px;
+}
+
+.avatar-preview {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #e0e7ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    font-weight: 500;
+    color: #4f46e5;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+}
+
+.avatar-preview.has-avatar #avatar-initials {
+    display: none;
+}
+
+.avatar-upload-label {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #4a6cf7;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+}
+
+.avatar-upload-label:hover {
+    background-color: #3955c8;
+    transform: scale(1.1);
+}
+
+.avatar-upload {
+    display: none;
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.profile-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1e293b;
+    margin: 0 0 5px 0;
+}
+
+.profile-details {
+    color: #64748b;
+    font-size: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px 12px;
+}
+
+.detail-position, .detail-department {
+    font-weight: 500;
+}
+
+.profile-content {
+    padding: 30px;
+}
+
+.profile-form .form-group {
+    margin-bottom: 20px;
+}
+
+.profile-form .form-group label {
+    display: block;
+    font-weight: 500;
+    color: #475569;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.profile-form .form-group input,
+.profile-form .form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    background-color: #f8fafc;
+    color: #334155;
+}
+
+.profile-form .form-group input:read-only,
+.profile-form .form-group textarea:read-only {
+    cursor: default;
+    color: #64748b;
+}
+
+.profile-form .form-group input.editable,
+.profile-form .form-group textarea.editable {
+    background-color: white;
+    border-color: #cbd5e1;
+}
+
+.profile-form .form-group input:focus,
+.profile-form .form-group textarea:focus {
+    outline: none;
+    border-color: #4a6cf7;
+    box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.15);
+}
+
+/* Секция пароля */
+.password-section {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.password-section h4 {
+    font-size: 16px;
+    color: #475569;
+    margin-bottom: 15px;
+}
+
+/* Управление кнопками профиля */
+.profile-controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+#change-password-btn {
+    background-color: transparent;
+    border: 1px solid #e2e8f0;
+    color: #64748b;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#change-password-btn:hover {
+    background-color: #f1f5f9;
+    color: #475569;
+}
+
+#edit-profile-btn {
+    background-color: #4a6cf7;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#edit-profile-btn:hover {
+    background-color: #3955c8;
+}
+
+#save-profile-btn {
+    background-color: #10b981;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#save-profile-btn:hover {
+    background-color: #059669;
+}
+
+#cancel-profile-btn {
+    background-color: transparent;
+    border: 1px solid #e2e8f0;
+    color: #64748b;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#cancel-profile-btn:hover {
+    background-color: #f1f5f9;
+    color: #475569;
+}
+
+/* Адаптивность */
+@media (max-width: 576px) {
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .profile-avatar-container {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    
+    .profile-details {
+        justify-content: center;
+    }
+}

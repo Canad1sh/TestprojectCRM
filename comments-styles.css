@@ -1,0 +1,289 @@
+/* Стили для комментариев и деталей задачи */
+
+/* Модальное окно для просмотра задачи */
+#task-detail-modal .modal-content {
+    max-width: 700px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.task-detail-section {
+    margin-bottom: 24px;
+    background-color: #f8fafc;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.task-detail-section h4 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: #475569;
+    font-size: 16px;
+    font-weight: 600;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 8px;
+}
+
+.task-detail-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.detail-label {
+    font-weight: 500;
+    width: 140px;
+    color: #475569;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.detail-value {
+    color: #1e293b;
+    font-size: 14px;
+    flex-grow: 1;
+}
+
+.status-новая {
+    color: #1976d2;
+    background-color: #e3f2fd;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.status-в-работе {
+    color: #ff8f00;
+    background-color: #fff8e1;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.status-выполнена {
+    color: #2e7d32;
+    background-color: #e8f5e9;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.priority-низкий {
+    color: #2e7d32;
+}
+
+.priority-средний {
+    color: #ff8f00;
+}
+
+.priority-высокий {
+    color: #d32f2f;
+}
+
+.task-detail-description {
+    line-height: 1.6;
+    color: #334155;
+    padding: 12px;
+    background-color: white;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+    white-space: pre-line;
+}
+
+.add-participant-btn {
+    background-color: #e0e7ff;
+    color: #4f46e5;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.add-participant-btn:hover {
+    background-color: #c7d2fe;
+    transform: scale(1.1);
+}
+
+/* Секция комментариев */
+.comments-section {
+    margin-top: 20px;
+}
+
+.comments-container {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 16px;
+    padding-right: 8px;
+}
+
+.empty-comments {
+    text-align: center;
+    padding: 20px;
+    color: #64748b;
+    font-style: italic;
+    background-color: white;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+}
+
+.comment-item {
+    margin-bottom: 12px;
+    padding: 12px;
+    background-color: white;
+    border-radius: 8px;
+    border-left: 3px solid #4a6cf7;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+.comment-item.current-user-comment {
+    border-left-color: #10b981;
+    background-color: #f0fdf4;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 13px;
+}
+
+.comment-author {
+    font-weight: 600;
+    color: #334155;
+}
+
+.comment-date {
+    color: #64748b;
+}
+
+.comment-text {
+    color: #1e293b;
+    line-height: 1.5;
+    white-space: pre-line;
+    word-break: break-word;
+}
+
+.delete-comment-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: none;
+    border: none;
+    color: #ef4444;
+    font-size: 14px;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    opacity: 0.5;
+}
+
+.comment-item:hover .delete-comment-btn {
+    opacity: 1;
+}
+
+.delete-comment-btn:hover {
+    background-color: #fee2e2;
+}
+
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#new-comment {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    resize: vertical;
+    height: 80px;
+    font-family: inherit;
+    transition: all 0.2s ease;
+}
+
+#new-comment:focus {
+    outline: none;
+    border-color: #4a6cf7;
+    box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.15);
+}
+
+#add-comment-btn {
+    align-self: flex-end;
+}
+
+/* Стили для кнопки просмотра задачи */
+.task-button.view {
+    background-color: #3b82f6;
+    color: white;
+}
+
+.task-button.view:hover {
+    background-color: #2563eb;
+}
+
+/* Модальное окно добавления участника */
+#add-participant-modal .modal-content {
+    max-width: 400px;
+}
+
+/* Текущий пользователь в таблице пользователей */
+.current-user-row {
+    background-color: #f0f9ff;
+}
+
+.current-user-badge {
+    background-color: #4a6cf7;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 11px;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
+/* Сообщения при отсутствии задач или пользователя */
+.no-user-message, .no-tasks-message {
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f1f5f9;
+    color: #64748b;
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Анимация при наведении на карточку задачи */
+.task-card {
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.task-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Подсказка для форм */
+.form-hint {
+    color: #64748b;
+    font-size: 12px;
+    margin-top: 4px;
+    font-style: italic;
+}

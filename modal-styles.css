@@ -1,0 +1,202 @@
+/* Стили для обновленных модальных окон */
+
+/* Модальное окно для просмотра и редактирования задачи */
+.modal-large {
+    max-width: 900px;
+    width: 90%;
+}
+
+/* Форма задачи с двумя колонками */
+.task-form-container {
+    display: flex;
+    gap: 20px;
+}
+
+.task-form-left {
+    flex: 3;
+}
+
+.task-form-right {
+    flex: 2;
+    background-color: var(--color-bg-main);
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+}
+
+/* Чек-лист для задач */
+.checklist-container {
+    background-color: var(--color-bg-main);
+    border-radius: 6px;
+    border: 1px solid var(--color-border);
+    padding: 10px;
+    margin-bottom: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.checklist-empty {
+    color: var(--color-text-muted);
+    text-align: center;
+    padding: 10px;
+    font-style: italic;
+}
+
+.checklist-add {
+    display: flex;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.checklist-add input {
+    flex-grow: 1;
+}
+
+/* Модальное окно для просмотра задачи и комментариев */
+#task-detail-modal .modal-content {
+    max-width: 900px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+/* Выбор множественных пользователей */
+select[multiple] {
+    height: 100px;
+}
+
+/* Форма с действиями внизу */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid var(--color-border);
+    gap: 10px;
+}
+
+/* Кнопки действий для формы */
+.form-actions .secondary-btn.danger {
+    margin-right: auto;
+}
+
+/* Поле для крайнего срока */
+input[type="datetime-local"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: var(--color-bg-main);
+    color: var(--color-text-primary);
+}
+
+/* Переопределение стилей для маленьких кнопок */
+.secondary-btn.small {
+    height: 30px;
+    padding: 0 12px;
+    font-size: 12px;
+    border-radius: 15px;
+}
+
+/* Дополнительные стили для модального окна календарного события */
+#event-modal .form-group {
+    margin-bottom: 15px;
+}
+
+#event-modal input[type="date"],
+#event-modal input[type="time"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: var(--color-bg-main);
+    color: var(--color-text-primary);
+}
+
+/* Стили для пользователя с просроченной задачей */
+.overdue {
+    color: var(--color-danger);
+}
+
+/* Сообщения для поиска */
+.search-results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: var(--color-bg-card);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 1px 3px var(--color-shadow);
+}
+
+.search-results-header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: var(--color-text-primary);
+}
+
+/* Специальная колонка для результатов поиска */
+.search-results-column {
+    width: 100%;
+}
+
+/* Анимация появления модального окна */
+.modal {
+    animation: fadeInModal 0.3s ease;
+}
+
+@keyframes fadeInModal {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    animation: slideInModal 0.3s ease;
+}
+
+@keyframes slideInModal {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Стили для маленьких аватаров пользователей */
+.user-avatar-small {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 600;
+    margin-right: 5px;
+}
+
+/* Стили для адаптивного дизайна в модальных окнах */
+@media (max-width: 768px) {
+    .task-form-container {
+        flex-direction: column;
+    }
+    
+    .modal-large {
+        width: 95%;
+    }
+    
+    .task-detail-container {
+        flex-direction: column;
+    }
+}

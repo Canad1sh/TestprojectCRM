@@ -1,0 +1,340 @@
+/* Стили для управления пользователями */
+
+.users-section {
+    padding: 20px;
+}
+
+.users-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.users-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1e293b;
+    margin: 0;
+}
+
+.users-controls {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.search-wrapper {
+    position: relative;
+    width: 250px;
+}
+
+.search-wrapper i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+}
+
+#user-search {
+    width: 100%;
+    padding: 8px 12px 8px 35px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+#user-search:focus {
+    outline: none;
+    border-color: #4a6cf7;
+    box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.15);
+}
+
+#user-filter {
+    padding: 8px 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: white;
+    color: #475569;
+    min-width: 140px;
+}
+
+#user-filter:focus {
+    outline: none;
+    border-color: #4a6cf7;
+}
+
+.users-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.users-table th {
+    background-color: #f8fafc;
+    font-weight: 600;
+    color: #475569;
+    text-align: left;
+    padding: 12px 15px;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 14px;
+}
+
+.users-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #1e293b;
+    font-size: 14px;
+}
+
+.users-table tr:last-child td {
+    border-bottom: none;
+}
+
+.users-table tr:hover {
+    background-color: #f8fafc;
+}
+
+.current-user-row {
+    background-color: #f0f9ff !important;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-avatar.small {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #e0e7ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: #4f46e5;
+    flex-shrink: 0;
+    background-size: cover;
+    background-position: center;
+}
+
+.user-name-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-name {
+    font-weight: 500;
+    color: #334155;
+}
+
+.user-full-name {
+    color: #64748b;
+    font-size: 12px;
+}
+
+.current-user-badge {
+    background-color: #4a6cf7;
+    color: white;
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 5px;
+    font-weight: 500;
+    vertical-align: middle;
+}
+
+.user-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.admin-badge {
+    background-color: #fef9c3;
+    color: #ca8a04;
+}
+
+.active-badge {
+    background-color: #dcfce7;
+    color: #16a34a;
+}
+
+.inactive-badge {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+.actions-cell {
+    white-space: nowrap;
+    text-align: right;
+}
+
+.action-btn {
+    background-color: transparent;
+    border: none;
+    color: #64748b;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+    background-color: #f1f5f9;
+    color: #334155;
+}
+
+.action-btn.view-btn:hover {
+    color: #4a6cf7;
+}
+
+.action-btn.edit-btn:hover {
+    color: #f59e0b;
+}
+
+.action-btn.delete-btn:hover {
+    color: #ef4444;
+    background-color: #fee2e2;
+}
+
+.action-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.action-btn.disabled:hover {
+    background-color: transparent;
+    color: #64748b;
+}
+
+/* Стили для модальной формы пользователя */
+.user-form-content {
+    padding: 24px;
+}
+
+.user-form h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: #1e293b;
+}
+
+.user-form .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 576px) {
+    .user-form .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.user-form .form-group {
+    margin-bottom: 15px;
+}
+
+.user-form .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #475569;
+    font-size: 14px;
+}
+
+.user-form .form-group input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.user-form .form-group input:focus {
+    outline: none;
+    border-color: #4a6cf7;
+    box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.15);
+}
+
+.user-form .form-hint {
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 4px;
+}
+
+.user-permissions {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.user-permissions h4 {
+    font-size: 16px;
+    color: #475569;
+    margin-bottom: 15px;
+}
+
+.checkbox-group {
+    margin-bottom: 10px;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-right: 8px;
+    width: auto;
+}
+
+.user-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Пустой список */
+.empty-list-message {
+    text-align: center;
+    padding: 40px 20px;
+    color: #64748b;
+}
+
+.empty-list-message i {
+    font-size: 36px;
+    margin-bottom: 10px;
+    opacity: 0.5;
+}
+
+.empty-list-message p {
+    font-size: 16px;
+    margin: 0;
+}
